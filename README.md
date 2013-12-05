@@ -1,0 +1,4 @@
+Autovote
+========
+
+Auto vote
