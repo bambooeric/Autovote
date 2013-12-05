@@ -1,0 +1,29 @@
+// AutoVote.idl : AutoVote.exe 的类型库源
+
+// 此文件将由 MIDL 编译器处理以产生
+// 类型库(AutoVote.tlb)。
+
+[ uuid(AB336EE9-32C1-4BF4-BF3C-9F07CE092E62), version(1.0) ]
+library AutoVote
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  CAutoVoteDoc 的主调度接口
+	
+	[ uuid(5D3F01FF-9BF7-48C4-840B-2260F277BFBB) ]
+	dispinterface IAutoVote
+	{
+		properties:
+			
+		methods:
+	};
+
+	//  CAutoVoteDoc 的类信息
+	
+	[ uuid(BD59EC3D-5BC4-447C-B257-8A852DF15DCC) ]
+	coclass AutoVote
+	{
+		[default] dispinterface IAutoVote;
+	};
+};
