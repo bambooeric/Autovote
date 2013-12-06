@@ -215,7 +215,7 @@ void CAutoVoteDlg::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	//CDialogEx::OnOK();
-	char *szURL = "www.google.com";
+	char *szURL = "http://www.baidu.com";
 	DWORD dwSize=0;
 	LPSTR lpszData = NULL;
 	lpszData=new char[1];
@@ -224,6 +224,7 @@ void CAutoVoteDlg::OnBnClickedOk()
 retry:
 	if(!InternetGetCookie((LPWSTR)szURL, (LPWSTR)"", (LPWSTR)lpszData, &dwSize))
 	{
+		TRACE("last error is %d\n",GetLastError());
 		if (GetLastError()== ERROR_INSUFFICIENT_BUFFER)
 		{
 			delete []lpszData;
@@ -234,8 +235,16 @@ retry:
 		else
 		{
 			TRACE("Get cookie successed !\n");
-		}
-		TRACE("The cookie of your input web is :%s\n",lpszData);
+			TRACE("The cookie of your input web is empty \n");
 
+			delete []lpszData;
+		}
+	}
+	else
+	{
+		TRACE("Get cookie successed !\n");
+		TRACE("The cookie of your input web is: %s \n",lpszData);
+
+		delete []lpszData;
 	}
 }
